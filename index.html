@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TO-DO Game</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="app">
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">Offline task game</p>
+        <h1>TO-DO Game</h1>
+        <p class="intro">Add real tasks, finish them, earn XP, collect coins, and level up your day.</p>
+      </div>
+      <button class="ghost-button" id="resetGame" type="button">Reset Game</button>
+    </header>
+
+    <section class="stats" aria-label="Game progress">
+      <article class="stat-card">
+        <span>Level</span>
+        <strong id="levelValue">1</strong>
+      </article>
+      <article class="stat-card">
+        <span>XP</span>
+        <strong><span id="xpValue">0</span>/100</strong>
+      </article>
+      <article class="stat-card">
+        <span>Coins</span>
+        <strong id="coinValue">0</strong>
+      </article>
+      <article class="stat-card">
+        <span>Streak</span>
+        <strong><span id="streakValue">0</span> day</strong>
+      </article>
+    </section>
+
+    <div class="progress-wrap" aria-label="XP progress to next level">
+      <div class="progress-label">
+        <span>Next level</span>
+        <span id="nextLevelText">0 XP earned</span>
+      </div>
+      <div class="progress-track">
+        <div class="progress-fill" id="xpBar"></div>
+      </div>
+    </div>
+
+    <main class="layout">
+      <section class="panel add-panel" aria-labelledby="addQuestTitle">
+        <h2 id="addQuestTitle">Add a Quest</h2>
+        <form id="todoForm" class="todo-form">
+          <label for="taskInput">Task name</label>
+          <input id="taskInput" name="task" type="text" maxlength="80" placeholder="Example: Finish math homework" required>
+
+          <div class="form-grid">
+            <div>
+              <label for="difficultyInput">Difficulty</label>
+              <select id="difficultyInput" name="difficulty">
+                <option value="easy">Easy: 10 XP</option>
+                <option value="normal" selected>Normal: 20 XP</option>
+                <option value="boss">Boss: 35 XP</option>
+              </select>
+            </div>
+            <div>
+              <label for="dueInput">Due date</label>
+              <input id="dueInput" name="due" type="date">
+            </div>
+          </div>
+
+          <button class="primary-button" type="submit">Add Quest</button>
+        </form>
+
+        <div class="daily-box">
+          <div>
+            <p class="eyebrow">Daily challenge</p>
+            <h3>Finish 3 quests today</h3>
+            <p id="dailyText">0 of 3 completed</p>
+          </div>
+          <div class="small-progress" aria-hidden="true">
+            <div id="dailyBar"></div>
+          </div>
+        </div>
+
+        <p class="save-note">Progress is saved automatically in this browser.</p>
+      </section>
+
+      <section class="panel quest-panel" aria-labelledby="questListTitle">
+        <div class="quest-heading">
+          <div>
+            <h2 id="questListTitle">Quest Board</h2>
+            <p id="summaryText">No quests yet.</p>
+          </div>
+          <div class="controls">
+            <select id="filterInput" aria-label="Filter quests">
+              <option value="all">All</option>
+              <option value="active">Active</option>
+              <option value="done">Done</option>
+            </select>
+            <select id="sortInput" aria-label="Sort quests">
+              <option value="newest">Newest</option>
+              <option value="due">Due date</option>
+              <option value="difficulty">Difficulty</option>
+            </select>
+          </div>
+        </div>
+
+        <ul class="task-list" id="taskList" aria-live="polite"></ul>
+
+        <div class="empty-state" id="emptyState">
+          <h3>Your quest board is clear.</h3>
+          <p>Add one task to begin earning XP.</p>
+        </div>
+      </section>
+    </main>
+
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
