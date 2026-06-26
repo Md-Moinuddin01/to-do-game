@@ -1,4 +1,4 @@
-# TO-DO Game
+# TO DO Game
 
 TO-DO Game is a small offline task game made with simple HTML, CSS, and JavaScript. You can open it directly in a browser, add tasks, finish them, earn XP, collect coins, and level up.
 
